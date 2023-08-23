@@ -37,13 +37,12 @@ const places = [
   
     const placeStyle = {
       fontFamily:"GangwonState",
-      margin: '20px',
+      margin: '20px auto',
       border: '1px solid #ddd',
       padding: '10px',
       borderRadius: '10px',
       boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
       maxWidth: '90%',
-      margin: '20px auto'
     };
 
     const descriptionStyle = {
