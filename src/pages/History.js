@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import "../App.css"
 const places = [
     {
       title: "오사카 성",
@@ -18,7 +18,7 @@ const places = [
     },
     {
       title: "이쿠노 코리아타운",
-      imageUrl: "/이쿠노코리아타운.png",
+      imageUrl: "/이쿠노 코리아타운.png",
       description: "오사카의 한인 거리로, 다양한 한국 음식과 상품들을 만나볼 수 있다. 골목골목 특색 있는 상점들이 모여 있어 탐방이 즐겁다."
     },
     {
@@ -32,30 +32,79 @@ const places = [
       description: "교토의 유명한 관광지로, 아름다운 풍경과 역사적인 유적들이 어우러져 있다. 특히 가을의 단풍은 방문객들에게 인기가 있다."
     },
   ];
-const Place = ({ place }) => {
-  const [showMore, setShowMore] = useState(false);
+  const Place = ({ place }) => {
+    const [showMore, setShowMore] = useState(false);
+  
+    const placeStyle = {
+      fontFamily:"GangwonState",
+      margin: '20px',
+      border: '1px solid #ddd',
+      padding: '10px',
+      borderRadius: '10px',
+      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+      maxWidth: '90%',
+      margin: '20px auto'
+    };
 
-  return (
-    <div style={{ margin: '20px', border: '1px solid #ccc', padding: '10px', borderRadius: '10px' }}>
-      <h2>{place.title}</h2>
-      <img src={place.imageUrl} alt={place.title} width="200px" />
-      {showMore && <p>{place.description}</p>}
-      <button onClick={() => setShowMore(!showMore)}>
-        {showMore ? '숨기기' : '더보기'}
-      </button>
-    </div>
-  );
-};
-
-const History = () => {
-  return (
-    <div>
-      <h1>오사카, 교토의 한국역사적 건물과 문화</h1>
-      {places.map(place => (
-        <Place key={place.title} place={place} />
-      ))}
-    </div>
-  );
-}
-
-export default History;
+    const descriptionStyle = {
+        fontSize: '20px',
+        color:'gray'
+      };
+  
+    const imageStyle = {
+      display: 'block',
+      width: '100%',
+      maxWidth: '300px',
+      height: 'auto',
+      margin: '0 auto',
+      borderRadius: '10px'
+    };
+  
+    const buttonStyle = {
+      marginTop: '10px',
+      padding: '8px 16px',
+      backgroundColor: '#009900',
+      color: 'white',
+      border: 'none',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      transition: 'background-color 0.3s'
+    };
+  
+    return (
+      <div style={placeStyle}>
+        <h2 >{place.title}</h2>
+        <img src={place.imageUrl} alt={place.title} style={imageStyle} />
+        {showMore && <p style={descriptionStyle}>{place.description}</p>}
+        <button style={buttonStyle} onClick={() => setShowMore(!showMore)}>
+          {showMore ? '숨기기' : '더보기'}
+        </button>
+      </div>
+    );
+  };
+  
+  const History = () => {
+    const containerStyle = {
+      padding: '0 10px'
+    };
+  
+    const titleStyle = {
+      fontFamily: 'GangwonState',
+      textAlign: 'center',
+      marginBottom: '30px',
+      color: '#333',
+      fontWeight: 'bold'
+    };
+  
+    return (
+      <div style={containerStyle}>
+        <h1 style={titleStyle}>오사카, 교토의 한국역사적</h1>
+        <h1 style={titleStyle}>건물과 문화</h1>
+        {places.map(place => (
+          <Place key={place.title} place={place} />
+        ))}
+      </div>
+    );
+  }
+  
+  export default History;
